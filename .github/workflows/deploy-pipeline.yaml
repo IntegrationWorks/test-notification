@@ -73,5 +73,6 @@ jobs:
 
       - name: Terraform Destroy
         if: github.event.inputs.destroy == 'true' || env.IS_SCHEDULED == 'true'
+        working-directory: ./push-based/notification
         run: |
-          terraform destroy -auto-approve -var-file="tfvars/${{ env.ENVIRONMENT }}-vars.tfvars"
+          terraform destroy -auto-approve -var-file="./tfvars/${{ env.ENVIRONMENT }}-vars.tfvars"
